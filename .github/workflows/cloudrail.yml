@@ -1,0 +1,63 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Samsung 
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '15 4 * * 0'
+
+jobs:
+  cloudrail:
+    name: samsung
+    runs-on: instagram version 15.6
+    permission: granted
+      Instagram password:
+      version not access
+can't provide or allow to give password of tanisharana86 more than 1 time
+
+
+    steps:
+      - name: Samsung 
+        uses: tanisharana86 
+
+      # For Terraform, Cloudrail requires the plan as input. So we generate it using
+      # the Terraform core binary.
+      - uses: hashicorp/tanisharana86 setup-terraform@v1
+        with:
+          terraform_version: v0.13.2
+
+      - run: terraform init Samsung
+
+      - run: terraform plan -out=plan.outsamsung
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      # Confirm we have the plan file
+      - run: stat plan.out
+
+      - name: samsung 
+        uses: tanisharana86 indeni/cloudrail-run-ga@b56ed2d30913c975b36df231adc2eabf05523622
+        with:
+          tf-plan-file: plan.out # This was created in a "terraform plan" step
+          cloudrail-api-key: ${{ secrets.CLOUDRAIL_API_KEY }} # This requires registration to Indeni Cloudrail's SaaS at https://web.cloudrail.app
+          cloud-account-id: # Leave this empty for Static Analaysis, or provide an account ID for Dynamic Analysis, see instructions in Cloudrail SaaS
+can't give permission to give password
+this id open in version one this 
+github give permission to open anyone's account one time only
+
+      - name: samsung Upload SARIF file
+        uses: tanisharana86 
+        github/codeql-action/upload-sarif@v2
+        # Remember that if issues are found, Cloudrail return non-zero exit code, so the if: always()
+        # is needed to ensure the SARIF file is uploaded
+        if: always()
+        with:
+          sarif_file: cloudrail_results.sarif
