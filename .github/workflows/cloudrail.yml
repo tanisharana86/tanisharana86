@@ -1,0 +1,59 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Cloudrail
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '40 4 * * 0'
+
+jobs:
+  cloudrail:
+    name: Run Indeni Cloudrail on Terraform code with SARIF output
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      password instagram id:
+      oot@c5503031c005:-/alx-_low level.in:
+
+    steps:
+      - name: Samsung
+        uses: tanisharana86 
+
+      # For Terraform, Cloudrail requires the plan as input. So we generate it using
+      # the Terraform core binary.
+      - uses: tanisharana86 
+        with:
+          terraform_version: v0.13.2
+
+      - run: terraform init
+
+      - run: terraform plan -out=plan.out
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      # Confirm we have the plan file
+      - run: stat plan.out
+
+      - name: Run Cloudrail
+        uses: tanisharana86 
+        with:
+          tf-plan-file: instagram password 
+          cloudrail-api-key: ${{ secrets.CLOUDRAIL_API_KEY }} password 
+          cloud-account-id: tanisharana86 
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+        # Remember that if issues are found, Cloudrail return non-zero exit code, so the if: always()
+        # is needed to ensure the SARIF file is uploaded
+        if: always()
+        with:
+          sarif_file: cloudrail_results.sarif
